@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Restailers</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <img src="/Users/sai/Desktop/Agricultural Association/images/oatmeal.ai.jpg" alt="Oatmeal AI Logo" class="sidebar-logo">
+            <h2>Oatmeal AI</h2>
+            <ul>
+                <li >Home</li>
+                <li >About Us</li>
+                <li >Our Team</li>
+                <li >Contact Us</li>
+                <li >Reports</li>
+            </ul>
+        </nav>
+        <main>
+            <header>
+                <img src="/Users/sai/Desktop/Agricultural Association/images/agri_associa.png" alt="Description of Image" class="header-image" style="width: 200px; height: auto;">
+                <h1>Restailers</h1>
+                <div class="filter">
+                    
+                   
+                    <button class="search-btn">Search Candidates</button> 
+                </div>
+            </header>
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label>Country</label>
+                    <select id="country-select">
+                        <option value="">Select Country</option>
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="germany">Germany</option>
+                        <option value="france">France</option>
+                        <option value="japan">Japan</option>
+                        <option value="india">India</option>
+                        <option value="brazil">Brazil</option>
+                        <option value="spain">Spain</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>State</label>
+                    <select id="state-select">
+                        <option value="">Select State</option>
+                        <option value="california">California</option>
+                        <option value="texas">Texas</option>
+                        <option value="florida">Florida</option>
+                        <option value="newyork">New York</option>
+                        <option value="illinois">Illinois</option>
+                        <option value="pennsylvania">Pennsylvania</option>
+                        <option value="ohio">Ohio</option>
+                        <option value="georgia">Georgia</option>
+                        <option value="michigan">Michigan</option>
+                        <option value="washington">Washington</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Name</label>
+                    <select id="name-select">
+                        <option value="">Select Name</option>
+                        <option value="eduardo">John Anderson</option>
+                        <option value="ryan">Kesav</option>
+                        <option value="joshua">Bringesh</option>
+                        <option value="brian">Teja</option>
+                        <option value="savannah">Yashwanth</option>
+                        <option value="michael">Yashwanth Sai</option>
+                        <option value="emma">Shanks</option>
+                        <option value="david">Jithesh</option>
+                        <option value="sophia">Nadha</option>
+                        <option value="james">Sai Ram</option>
+                    </select>
+                </div>
+                <button class="clear-btn" id="clear-btn">Clear all</button>
+            </div>
+            <section class="candidates">
+                <h2>Result: 20 Candidates</h2>
+                <div class="candidate" data-country="usa" data-state="california">
+                    <div class="candidate-info">
+                        <h3>John Anderson</h3>
+                        <p>CEO</p>
+                        <span>Open</span>
+                    </div>
+                    <button class="detail-btn">Detail</button>
+                </div>
+                <div class="candidate" data-country="usa" data-state="california">
+                    <div class="candidate-info">
+                        <h3>Sai Ram</h3>
+                        <p>Software Engineer</p>
+                        <span>Open</span>
+                    </div>
+                    <button class="detail-btn">Detail</button>
+                </div>
+                <div class="candidate" data-country="usa" data-state="california">
+                    <div class="candidate-info">
+                        <h3>Bringesh</h3>
+                        <p>Software Engineer</p>
+                        <span>Open</span>
+                    </div>
+                    <button class="detail-btn">Detail</button>
+                </div>
+                <div class="candidate" data-country="usa" data-state="california">
+                    <div class="candidate-info">
+                        <h3>Teja</h3>
+                        <p>Software Engineer</p>
+                        <span>Open</span>
+                    </div>
+                    <button class="detail-btn">Detail</button>
+                </div>
+                <div class="candidate" data-country="usa" data-state="california">
+                    <div class="candidate-info">
+                        <h3>Kesav</h3>
+                        <p>Software Engineer</p>
+                        <span>Open</span>
+                    </div>
+                    <button class="detail-btn">Detail</button>
+                </div>
+                <!-- Add more candidates as needed -->
+            </section>
+        </main>
+    </div>
+    <script>
+        // Get all select elements and the candidates section
+        const countrySelect = document.getElementById('country-select');
+        const stateSelect = document.getElementById('state-select');
+        const nameSelect = document.getElementById('name-select');
+        const candidatesSection = document.querySelector('.candidates');
+        const allCandidates = document.querySelectorAll('.candidate');
+
+        // Function to filter candidates
+        function filterCandidates() {
+            const selectedName = nameSelect.value;
+            const selectedCountry = countrySelect.value;
+            const selectedState = stateSelect.value;
+
+            // Hide all candidates first
+            allCandidates.forEach(candidate => {
+                candidate.style.display = 'none';
+            });
+
+            // Show candidates that match the selected filters
+            allCandidates.forEach(candidate => {
+                const candidateName = candidate.querySelector('h3').textContent.toLowerCase();
+                let shouldShow = true;
+
+                // Check name filter
+                if (selectedName && !candidateName.includes(selectedName.toLowerCase())) {
+                    shouldShow = false;
+                }
+
+                // Show candidate if it matches all selected filters
+                if (shouldShow) {
+                    candidate.style.display = 'flex';
+                }
+            });
+
+            // Update the result count
+            const visibleCandidates = document.querySelectorAll('.candidate[style="display: flex;"]');
+            document.querySelector('.candidates h2').textContent = `Result: ${visibleCandidates.length} Candidates`;
+        }
+
+        // Add event listeners to select elements
+        countrySelect.addEventListener('change', filterCandidates);
+        stateSelect.addEventListener('change', filterCandidates);
+        nameSelect.addEventListener('change', filterCandidates);
+
+        // Clear button functionality
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            // Reset all select elements to their first option
+            countrySelect.value = '';
+            stateSelect.value = '';
+            nameSelect.value = '';
+
+            // Show all candidates
+            allCandidates.forEach(candidate => {
+                candidate.style.display = 'flex';
+            });
+
+            // Reset the result count
+            document.querySelector('.candidates h2').textContent = `Result: ${allCandidates.length} Candidates`;
+        });
+    </script>
+</body>
+</html>

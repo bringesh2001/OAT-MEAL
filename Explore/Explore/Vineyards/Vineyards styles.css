@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin: 0 0 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar .active {
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+}
+
+.filter input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.filter button {
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.candidates {
+    margin-top: 20px;
+}
+
+.candidate {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.candidate-info {
+    /* Contains the existing candidate information */
+}
+
+.candidate h3 {
+    margin: 0;
+}
+
+.candidate p {
+    margin: 5px 0;
+}
+
+.candidate span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #E3F2FD;
+    color: #1976D2;
+    border: 1px solid #90CAF9;
+}
+
+/* Specific styles for each status */
+.candidate span[data-status="applied"] {
+    background-color: #E3F2FD;
+    color: #1976D2;
+    border: 1px solid #90CAF9;
+}
+
+.candidate span[data-status="interviewed"] {
+    background-color: #F3E5F5;
+    color: #7B1FA2;
+    border: 1px solid #CE93D8;
+}
+
+.candidate span[data-status="offered"] {
+    background-color: #E8F5E9;
+    color: #388E3C;
+    border: 1px solid #A5D6A7;
+}
+
+.header-image {
+    width: 80px;
+    height: auto;
+}
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.filter-section {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    color: #666;
+}
+
+.filter-group select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+.clear-btn {
+    margin-left: auto;
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    color: #4a90e2;
+    cursor: pointer;
+}
+
+.search-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+.detail-btn {
+    background-color: #F0F0FF;
+    color: #4a90e2;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.detail-btn:hover {
+    background-color: #E8E8FF;
+}
